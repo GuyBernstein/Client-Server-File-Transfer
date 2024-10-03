@@ -3,9 +3,10 @@ import utils
 
 
 if __name__ == "__main__":
-    FILE_NAME = "port.info"
-    port = utils.read_from_port_file(FILE_NAME)
-    server = server.Server("", port)  # Host is local host like this
+    port = utils.read_from_port_file(utils.PORT_FILE)
+    if port == utils.DEFAULT_PORT:
+        print(f"Warning: proceeding with default port:{utils.PORT_FILE}")
+    server = server.Server("localhost", port)  # Host is local host like this
     server.start()
 
 
